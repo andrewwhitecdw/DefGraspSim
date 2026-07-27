@@ -98,7 +98,7 @@ Tests finishes when contact is lost (as is the case here), or when the maximum a
 
 #### Parallelizing simulations
 For the reorient, linear acceleration, and angular acceleration tests, evaluations over multiple vectors can be performed in parallel. For example, running 
-``python3 run_grasp_evaluation.py --object=rectangle --youngs=2e5 --density=1000 --ori_start=4 --ori_end=6 --mode=reorient --write --grasp_ind=3` will generate 3 simulation environments for vectors 4, 5, and 6. 
+`python3 run_grasp_evaluation.py --object=rectangle --youngs=2e5 --density=1000 --ori_start=4 --ori_end=6 --mode=reorient --write --grasp_ind=3` will generate 3 simulation environments for vectors 4, 5, and 6. 
 
 <img src="images/parallel_envs.png" width="500"/>
 
