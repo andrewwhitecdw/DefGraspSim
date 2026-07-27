@@ -45,6 +45,7 @@ setuptools.setup(
         'matplotlib',
         'plotly',
         'numpy',
+        'scipy',
     ],
     entry_points={
         "console_scripts": [
