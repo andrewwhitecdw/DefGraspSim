@@ -451,6 +451,5 @@ def write_metrics_to_h5(mode, grasp_ind, oris, num_grasp_poses,
 
         hf.close()
 
-    except BaseException:
-        print("Couldn't record data")
-        pass
+    except Exception as exc:
+        print("Couldn't record data:", exc)
