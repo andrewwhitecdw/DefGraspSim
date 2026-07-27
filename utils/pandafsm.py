@@ -318,8 +318,8 @@ class PandaFsm:
         min_torque = self.cfg['force_control']['min_torque']
         self.running_torque[0] -= min(total_F_err * Kp, 3 * Kp)
         self.running_torque[1] -= min(total_F_err * Kp, 3 * Kp)
-        self.running_torque[0] = min(min_torque, self.running_torque[0])
-        self.running_torque[1] = min(min_torque, self.running_torque[1])
+        self.running_torque[0] = max(min_torque, self.running_torque[0])
+        self.running_torque[1] = max(min_torque, self.running_torque[1])
 
         if DEBUG:
             print(self.running_torque, total_F_curr, self.desired_force)
@@ -757,7 +757,7 @@ class PandaFsm:
         self.gym_handle.set_particle_state_tensor(
             self.sim_handle, gymtorch.unwrap_tensor(self.saved_object_state))
         print(self.env_id, "Reverting back to state", self.saved_fsm_state)
-        self.inferred_rot_force_counter
+        self.inferred_rot_force_counter = 0
         self.state = self.saved_fsm_state
         self.squeeze_counter = 0
 
