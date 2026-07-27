@@ -99,7 +99,7 @@
 	<joint name="rev_jointx" type="revolute">
 		<axis xyz="1 0 0"/>
 		<dynamics damping="10.0" friction="0.0"/>
-		<limit effort="1e9.0" lower="-3.14" upper="3.14" velocity="1e9"/>
+		<limit effort="1e9" lower="-3.14" upper="3.14" velocity="1e9"/>
 		<origin rpy="0 0 0" xyz="0.0 0.0 -0.0"/>
 		<parent link="rev_linkz"/>
 		<child link="rev_link_twist"/>
@@ -249,7 +249,7 @@
 	<link name="panda_hand">
     		<visual>
       			<geometry>
-        			<mesh filename="franka_description/meshes/visual/hand.obj"/>
+        			<mesh filename="package://franka_description/meshes/visual/hand.obj"/>
       			</geometry>
     		</visual>
     		<collision>
@@ -285,7 +285,7 @@
 		<visual>
 			<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 			<geometry>
-		        	<mesh filename="franka_description/meshes/custom/full_fillet_finger.obj"/>
+		        	<mesh filename="package://franka_description/meshes/custom/full_fillet_finger.obj"/>
       			</geometry>
     		</visual>
     		<collision>
