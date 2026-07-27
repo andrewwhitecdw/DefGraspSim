@@ -56,14 +56,16 @@ parser.add_argument(
     default='',
     type=str,
     help="Additional string to add onto name of results files.")
-args = parser.parse_args()
+def main():
+    args = parser.parse_args()
+    oris = [args.ori_start, args.ori_end]
 
-oris = [args.ori_start, args.ori_end]
-
-
-if __name__ == "__main__":
     grasp_evaluator = GraspEvaluator(args.object, args.grasp_ind, oris, args.density,
                                      args.youngs, args.poissons, args.friction, args.mode, args.tag)
 
     if not grasp_evaluator.data_exists:
         grasp_evaluator.run_simulation()
+
+
+if __name__ == "__main__":
+    main()
