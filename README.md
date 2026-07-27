@@ -105,7 +105,7 @@ Each grasp test is run for one object and one grasp candidate with the `run_gras
 
 For usage summary, run:
 ```
-run_graps_evaluation -h
+run_grasp_evaluation -h
 ```
 
 Example usage:
@@ -133,7 +133,7 @@ There are four different grasp evaluations that can be performed:
 4. **Angular acceleration**. After pickup, the gripper angularly accelerates with a constant jerk about the associated vector. The test ends once the gripper loses contact with the object.
 
 # Storage of results
-When the `--write` flag is set, then the results of each instance of the script are stored in the corresponding object subfolder, ie. in `results/<object_name>.
+When the `--write` flag is set, then the results of each instance of the script are stored in the corresponding object subfolder, ie. in `results/<object_name>`.
 
 ## Creating master result files
 Each time `run_grasp_evaluation.py` is run with the `--write` flag, one file is generated in the `RESULTS_DIR` folder under a subfolder with the object name and an additional (optional) `RESULTS_STORAGE_TAG`. Within the `<RESULTS_DIR>/<object_name>` folder, the results files are automatically sorted into subfolders according to their elastic modulus. Run `make_master_h5s.py` in the root directory. Note that you will have to first change the `OBJ_RESULTS_DIR` in the script to be equal to the `<RESULTS_DIR>/<object_name>` directory of interest. This script will create master files for each type of grasp evaluation within each elastic modulus subfolder. These master files will be named: `pickup_master.h5`, `reorient_master.h5`, `shake_master.h5`, `twist_master.h5`.
