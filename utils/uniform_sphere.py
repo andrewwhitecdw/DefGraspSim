@@ -29,8 +29,15 @@ def quat_between_vectors(u, v):
     """Return the quaternion transformation between two vectors."""
     xyz = np.cross(u, v)
     w = np.sqrt(np.linalg.norm(u)**2 * np.linalg.norm(v)**2) + np.dot(u, v)
-    q = [xyz[0], xyz[1], xyz[2], w]
-    return q / np.linalg.norm(q)
+    q = np.array([xyz[0], xyz[1], xyz[2], w])
+    norm = np.linalg.norm(q)
+    if norm < 1e-12:
+        # Anti-parallel vectors: choose any axis perpendicular to u
+        tmp = np.array([1.0, 0.0, 0.0]) if abs(u[0]) < abs(u[1]) else np.array([0.0, 1.0, 0.0])
+        xyz = np.cross(u, tmp)
+        q = np.array([xyz[0], xyz[1], xyz[2], 0.0])
+        norm = np.linalg.norm(q)
+    return q / norm
 
 
 def point_from_spherical_coords(r, theta, phi):
