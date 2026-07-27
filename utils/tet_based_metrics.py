@@ -25,7 +25,7 @@ from scipy.signal import butter, filtfilt
 
 def get_strain_energy_of_element(ts, ti, particle_state_tensor, youngs):
     """Return the strain energy, volume, and center of a tetahedral element."""
-    voigt_stress = np.array([ts.x.x, ts.y.y, ts.z.z, ts.z.y, ts.z.x, ts.y.z])
+    voigt_stress = np.array([ts.x.x, ts.y.y, ts.z.z, ts.z.y, ts.z.x, ts.y.x])
     invE = 1 / youngs
     nu = 0.3  # poissons #TODO, CHNAGE THIS TO REFLECT POISSNS
     D_inv = np.zeros((6, 6))
@@ -38,9 +38,9 @@ def get_strain_energy_of_element(ts, ti, particle_state_tensor, youngs):
     D_inv[2][0] = -invE * nu
     D_inv[2][1] = -invE * nu
     D_inv[2][2] = invE
-    D_inv[3][3] = invE * (1.0 + nu)
-    D_inv[4][4] = invE * (1.0 + nu)
-    D_inv[5][5] = invE * (1.0 + nu)
+    D_inv[3][3] = 2 * invE * (1.0 + nu)
+    D_inv[4][4] = 2 * invE * (1.0 + nu)
+    D_inv[5][5] = 2 * invE * (1.0 + nu)
 
     voigt_strain = D_inv @ voigt_stress
 
