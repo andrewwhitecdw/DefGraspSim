@@ -32,9 +32,9 @@ def test_sampling(cls_sampler=graspsampling.sampling.UniformSampler, number_of_g
 
     # Load object
     fname_object = 'data/objects/banana.obj'
-    logging.info("Loading", fname_object)
+    logging.info(f"Loading {fname_object}")
     test_object = utilities.instantiate_mesh(file=fname_object, scale=0.01)
-    logging.info("Extents of loaded mesh:", test_object.extents)
+    logging.info(f"Extents of loaded mesh: {test_object.extents}")
 
     # Instantiate and run sampler
     sampler = cls_sampler(gripper, test_object)
