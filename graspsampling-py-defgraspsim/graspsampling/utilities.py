@@ -74,7 +74,7 @@ def sample_spherical_cap(cone_dirs, cone_aperture, num_samples_per_dir=1):
 def sample_random_orientation_z(mean_axis_z, axis_cone_aperture):
     """Sample a random orientation around a cap defined by mean_axis_z."""
     z_axis = sample_spherical_cap(
-        mean_axis_z, axis_cone_aperture, num_samples_per_dir=1
+        np.atleast_2d(mean_axis_z), axis_cone_aperture, num_samples_per_dir=1
     )[0]
     while True:
         r = sample_random_direction_R3(1)[0]
