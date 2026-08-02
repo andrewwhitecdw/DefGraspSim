@@ -447,16 +447,19 @@ class GraspEvaluator:
         while not all_done:
 
             # If the simulation is taking too long, declare fail
-            if (timeit.default_timer() - loop_start > self.cfg['timeout']['other_modes']
-                    and panda_fsms[i].state not in ['reorient', 'squeeze_no_gravity']) or (
-                        timeit.default_timer()
-                        - loop_start > self.cfg['timeout']['squeeze_no_gravity']
-                        and panda_fsms[i].state == "squeeze_no_gravity"):
-                print("Timed out")
-                for i in range(len(self.env_handles)):
+            elapsed = timeit.default_timer() - loop_start
+            timed_out = False
+            for i in range(len(self.env_handles)):
+                if (elapsed > self.cfg['timeout']['other_modes']
+                        and panda_fsms[i].state not in ['reorient', 'squeeze_no_gravity']) or (
+                            elapsed > self.cfg['timeout']['squeeze_no_gravity']
+                            and panda_fsms[i].state == "squeeze_no_gravity"):
+                    timed_out = True
                     if panda_fsms[i].state != "done":
                         panda_fsms[i].state = "done"
                         panda_fsms[i].timed_out = True
+            if timed_out:
+                print("Timed out")
 
             for i in range(len(self.env_handles)):
                 panda_fsms[i].update_previous_particle_state_tensor()
