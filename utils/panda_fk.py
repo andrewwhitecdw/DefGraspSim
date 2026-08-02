@@ -139,9 +139,9 @@ def get_fk(joints, hand_origin, mode="left"):
     elif mode == "mid":
         return e0 @ e1 @ e2 @ e3 @ e4 @ e5 @ e6 @ e7 @ e8 @ e9 @ e10 @ e11 @ e12 @ e13
     elif mode == "slides":
-        slide_x = e0 @ e1 @ e2 @ e3 @ e4 @ e5 @ e6 @ e7 @ e8 @ e9
-        slide_y = e0 @ e1 @ e2 @ e3 @ e4 @ e5 @ e6 @ e7 @ e8 @ e9 @ e10
-        slide_z = e0 @ e1 @ e2 @ e3 @ e4 @ e5 @ e6 @ e7 @ e8 @ e9 @ e10 @ e11
+        slide_x = e0 @ e1 @ e2 @ e3 @ e4 @ e5 @ e6 @ e7 @ e8 @ e9 @ e10
+        slide_y = e0 @ e1 @ e2 @ e3 @ e4 @ e5 @ e6 @ e7 @ e8 @ e9 @ e10 @ e11
+        slide_z = e0 @ e1 @ e2 @ e3 @ e4 @ e5 @ e6 @ e7 @ e8 @ e9 @ e10 @ e11 @ e12
         return slide_x, slide_y, slide_z
 
     else:
