@@ -27,10 +27,9 @@ from isaacgym import gymapi
 import utils.metrics_features_utils
 
 
-def test_get_desired_rpy():
-    """Test `metrics_features_utils.get_desired_rpy` functionality."""
-    reorient_quat = gymapi.Quat(0., 0., 0., 1.)
+def test_get_franka_rpy():
+    """Test `metrics_features_utils.get_franka_rpy` functionality."""
     grasp_quat = gymapi.Quat(0.3096829, 0.4129106, 0.8258211, -0.2272021)
-    _, rpy_actual = utils.metrics_features_utils.get_desired_rpy(reorient_quat, grasp_quat)
+    _, rpy_actual = utils.metrics_features_utils.get_franka_rpy(grasp_quat)
     rpy_expected = np.array([0.70899426, -0.58928654, -2.99733187])
     assert rpy_expected == pytest.approx(rpy_actual)
